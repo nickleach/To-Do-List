@@ -29,7 +29,7 @@ $('#addTask').on('submit', function(event){
   var taskText = $('#taskText').val();
   var taskInstance = new Todo({task: taskText});
   storageBin.push(taskInstance);
-  $('#tasks').append('<li><input type="checkbox">' + taskText + '<span class= "fa fa-minus-square"</span></li>');
+  $('#tasks').append('<li><input type="checkbox">' + taskText + '<button class= "fa fa-minus-square"></button></li>');
   // $('#tasks').html(template.example({value:storageBin}));
   this.reset();
 });
@@ -44,30 +44,33 @@ $('.fa-undo').on('click', function(event){
 });
 // toggle item
 
-$('.tasks').on('click', 'li', function(){
+$('.tasks').on('click', 'li',  function(event){
   event.preventDefault();
   $(this).addClass('complete');
   var tTask= $(this).text();
-  $('.complete').append('<li><input type="checkbox">'+ tTask + '<span class= "fa fa-minus-square"</span></li>');
+  $('.complete').append('<li><input type="checkbox" checked>'+ tTask + '<button class= "fa fa-minus-square"></button></li>');
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Closed';
   $(this).remove();
 
 });
-$('.complete').on('click', 'li', function(){
+$('.complete').on('click', 'li', function(event){
   event.preventDefault();
   $(this).removeClass('complete');
   var tTask= $(this).text();
-  $('.tasks').append('<li><input type="checkbox">'+ tTask + '<span class= "fa fa-minus-square"</span></li>');
+  $('.tasks').append('<li><input type="checkbox">'+ tTask + '<button class= "fa fa-minus-square"></button></li>');
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Open';
   $(this).remove();
 
 });
-$('.fa-minus-square').on('click', 'li',function(){
-  var tTask= $(this).text().remove();
-  var taskToEdit = _.find(storageBin, { task: tTask });
-
-
+$('.fa-minus-square').on("click", function (event){
+   event.preventDefault();
+   var tTask= $(this).prev('li').text();
+   console.log(tTask);
+   storageBin = _.without(storageBin, _.find(storageBin, { task: tTask }));
+   $(this).prev('li').remove();
+   $(this).remove();
 });
+
 // }());

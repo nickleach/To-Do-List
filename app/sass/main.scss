@@ -1,6 +1,7 @@
 body{
   background-color: #606060;
   font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
 }
 h1{
   text-align: center;
@@ -10,17 +11,21 @@ h1{
 }
 li{
   font-family: 'Quicksand', sans-serif;
+  list-style: none;
 }
-input{
+
+form{
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+}
+.form{
+  input{
   width: 400px;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Quicksand', sans-serif;
 }
-form{
-  margin-right: auto;
-  margin-left: auto;
-  width: 65%;
 }
 .complete{
   text-decoration: line-through;
@@ -31,4 +36,26 @@ form{
   margin-right: auto;
   width: 800px;
   border-radius: 15px;
+  position: relative;
+}
+.incomplete{
+  margin-right: auto;
+  margin-left: auto;
+  height: auto;
+  width: 600px;
+  li{
+    border: 1px solid lightgrey;
+
+  }
+  input{
+    margin-left: 5px;
+  }
+}
+.fa-undo{
+  padding: 5px;
+  float: right;
+  position: absolute;
+  right: 120px;
+  top: 95px;
+
 }

@@ -19,10 +19,17 @@ $('#addTask').on('submit', function(event){
   var taskText = $('#taskText').val();
   var taskInstance = new Todo({task: taskText});
   storageBin.push(taskInstance);
-  $('#tasks').append('<li>' + taskText + '</li>');
+  // $('#tasks').append('<li>' + taskText + '</li>');
+  $('#tasks').html(template.example({value:storageBin}));
   this.reset();
 });
+//Reset Button
+$('.fa-undo').on('click', function(event){
+  event.preventDefault();
+  $('#tasks').html('');
+  storageBin = [];
 
+});
 // toggle item
 
 $('#tasks').on('click', 'li', function(){

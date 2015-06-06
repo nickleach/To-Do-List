@@ -9,15 +9,27 @@ h1{
   font-size: 50px;
   color: #797979;
 }
+input{
+  border-radius: 8px;
+}
+button{
+  border-radius: 8px;
+}
 li{
   font-family: 'Quicksand', sans-serif;
   list-style: none;
 }
-
+ul{
+  padding-left: 33px;
+}
 form{
   margin-right: auto;
   margin-left: auto;
-  width: 70%;
+  width: 62%;
+  padding-bottom: 10px;
+}
+.tasks{
+  margin-top: 2px;
 }
 .form{
   input{
@@ -32,23 +44,30 @@ form{
 }
 .todo{
   background-color: #F6F6F6;
+  box-shadow: 3px 4px 9px 11px rgb(90, 86, 86);
   margin-left: auto;
   margin-right: auto;
   width: 800px;
   border-radius: 15px;
   position: relative;
 }
-.incomplete{
+.lists{
   margin-right: auto;
   margin-left: auto;
   height: auto;
   width: 600px;
+  font-size: 20px;
+
   li{
     border: 1px solid lightgrey;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 1px;
 
   }
   input{
     margin-left: 5px;
+    margin-right: 5px;
   }
 }
 .fa-undo{
@@ -62,4 +81,8 @@ form{
 .fa-minus-square{
   float: right;
   color: darkgrey;
+  position: absolute;
+  right: 5px;
+  top: 2px;
 }
+

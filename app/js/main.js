@@ -17,6 +17,7 @@
 
   var storageBin = [];
   var completedTask = [];
+  var theLi = $(this).parent('li');
 
 
 // var a = new Todo({task: taskText});
@@ -29,7 +30,7 @@ $('#addTask').on('submit', function(event){
   var taskText = $('#taskText').val();
   var taskInstance = new Todo({task: taskText});
   storageBin.push(taskInstance);
-  $('#tasks').append('<li><input type="checkbox">' + taskText + '<button class= "fa fa-minus-square"></button></li>');
+  $('#tasks').append('<li class="undone"><div class= "item"><label><input type="checkbox">' + taskText +'</label><button class= "fa fa-minus-square"></button></div></li>');
   // $('#tasks').html(template.example({value:storageBin}));
   this.reset();
 });
@@ -44,33 +45,30 @@ $('.fa-undo').on('click', function(event){
 });
 // toggle item
 
-$('.tasks').on('click', 'li',  function(event){
+$('.tasks').on('click', 'label', function(event){
   event.preventDefault();
   $(this).addClass('complete');
   var tTask= $(this).text();
-  $('.complete').append('<li><input type="checkbox" checked>'+ tTask + '<button class= "fa fa-minus-square"></button></li>');
+  $('.complete').append('<li class="undone"><div class= "item"><label><input type="checkbox">' + tTask +'</label><button class= "fa fa-minus-square"></button></div></li>');
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Closed';
-  $(this).remove();
-
+  $(this).closest('.undone').remove();
 });
-$('.complete').on('click', 'li', function(event){
+$('.complete').on('click', 'label', function(event){
   event.preventDefault();
   $(this).removeClass('complete');
   var tTask= $(this).text();
-  $('.tasks').append('<li><input type="checkbox">'+ tTask + '<button class= "fa fa-minus-square"></button></li>');
+  $('.tasks').append('<li class="undone"><div class= "item"><label><input type="checkbox">' + tTask +'</label><button class= "fa fa-minus-square"></button></div></li>');
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Open';
-  $(this).remove();
+  $(this).closest('.undone').remove();
 
 });
-$('.fa-minus-square').on("click", function (event){
+$('ul').on("click", 'button', function(event){
    event.preventDefault();
-   var tTask= $(this).prev('li').text();
-   console.log(tTask);
+   var tTask= $(this).closest('li').text();
    storageBin = _.without(storageBin, _.find(storageBin, { task: tTask }));
-   $(this).prev('li').remove();
-   $(this).remove();
+  $(this).closest('.undone').remove();
 });
 
 // }());

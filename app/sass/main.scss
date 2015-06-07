@@ -85,4 +85,26 @@ form{
   right: 5px;
   top: 2px;
 }
-
+.hidden{
+  visibility: hidden;
+  height: 0;
+}
+.bottom{
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  h5{
+    display: inline-block;
+  }
+  h6{
+  margin: 0;
+  float: right;
+  position: absolute;
+  right: -10px;
+  bottom: 30px;
+  }
+}
+i{
+  margin-right: 5px;
+}

@@ -91,7 +91,12 @@ function count(){
       return total++;
     }
   });
+  if( total === 0){
+    $('h5').addClass('hidden');
+  }else if(total > 0){
+  $('h5').removeClass('hidden');
   $('#count').html(total);
+}
 }
 console.log('Check it out yo... NO ERRORS');
 }());

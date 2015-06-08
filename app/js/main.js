@@ -1,6 +1,9 @@
-(function(){
- 'use strict';
+// (function(){
+//  'use strict';
 //Constuctor
+  var firstHalf = '<li class="undone"><div class= "item"><label><input type="checkbox">' ;
+  var secondHalf = '</label><span class="fa fa-minus-square"></span</div></li>';
+  var firstHalfClosed = '<li class="undone"><div class= "item"><label><input type="checkbox" checked>';
   var Todo = function(options){
     var args = options || {};
 
@@ -8,12 +11,13 @@
     this.status = 'Open';
 
   };
-
+ // PROTOTYPES!
+  Todo.prototype.isThisAPrototype = true;
   var storageBin = [];
-  var completedTask = [];
-  var theLi = $(this).parent('li');
-
-
+  $.fn.clearCompleted = function(){
+    $('.complete').empty();
+  storageBin =  _.filter(storageBin, { status: "Open" });
+  };
 //Set up submit
 //on submit create a new instance
 
@@ -22,8 +26,7 @@ $('#addTask').on('submit', function(event){
   var taskText = $('#taskText').val();
   var taskInstance = new Todo({task: taskText});
   storageBin.push(taskInstance);
-  $('#tasks').append('<li class="undone"><div class= "item"><label><input type="checkbox">' + taskText +'</label><span class="fa fa-minus-square"></span></div></li>');
-  // $('#tasks').html(template.example({value:storageBin}));
+  $('#tasks').append(firstHalf+ taskText + secondHalf);
   this.reset();
   $('footer').removeClass('hidden');
   count();
@@ -44,9 +47,8 @@ $('.fa-undo').on('click', function(event){
 
 $('.tasks').on('click', 'label', function(event){
   event.preventDefault();
-  $(this).addClass('complete');
   var tTask= $(this).text();
-  $('.complete').append('<li class="undone"><div class= "item"><label><input type="checkbox" checked>' + tTask +'</label><span class="fa fa-minus-square"></span</div></li>');
+  $('.complete').append(firstHalfClosed+ tTask + secondHalf);
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Closed';
   $(this).closest('.undone').remove();
@@ -57,9 +59,8 @@ $('.tasks').on('click', 'label', function(event){
 //Move Back to Uncomplete
 $('.complete').on('click', 'label', function(event){
   event.preventDefault();
-  $(this).removeClass('complete');
   var tTask= $(this).text();
-  $('.tasks').append('<li class="undone"><div class= "item"><label><input type="checkbox">' + tTask +'</label><span class="fa fa-minus-square"></span</div></li>');
+  $('.tasks').append(firstHalf + tTask + secondHalf);
   var taskToEdit = _.find(storageBin, { task: tTask });
   taskToEdit.status = 'Open';
   $(this).closest('.undone').remove();
@@ -75,21 +76,28 @@ $('ul').on("click", '.fa-minus-square', function(event){
   count();
 });
 // Show/Hide completed
-$('i').on('click', function(event){
+$('h6').on('click', function(event){
   event.preventDefault();
-  $('span').html('');
+  $('.hide').html('');
   $('.complete').toggleClass('hidden');
     // $this.toggleClass('SeeMore2');
     if($('.complete').hasClass('hidden')){
-        $('i').text('Show Completed');
-        $('i').addClass('fa-eye');
-        $('i').removeClass('fa-eye-slash');
+        $('.show').text('Show Completed');
+        $('.show').addClass('fa-eye');
+        $('.show').removeClass('fa-eye-slash');
     } else {
-        $('i').text('Hide Completed');
-        $('i').addClass('fa-eye-slash');
-        $('i').removeClass('fa-eye');
+        $('.show').text('Hide Completed');
+        $('.show').addClass('fa-eye-slash');
+        $('.show').removeClass('fa-eye');
     }
 });
+// Clear Completed Button
+$('.clear').on('click', function(){
+  $(this).clearCompleted();
+  $('h6').addClass('hidden');
+  $('.clear').addClass('hidden');
+});
+
 //Counter at the bottom
 function count(){
   var total = 0;
@@ -108,9 +116,11 @@ function count(){
   $('#count').html(total);
   }if (empty === 0){
    $('h6').addClass('hidden');
+   $('.clear').addClass('hidden');
   }else if (empty > 0){
     $('h6').removeClass('hidden');
+    $('.clear').removeClass('hidden');
   }
 }
 console.log('Check it out yo... NO ERRORS');
-}());
+// }());

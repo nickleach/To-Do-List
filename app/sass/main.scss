@@ -125,6 +125,8 @@ label{
   position: absolute;
   right: -10px;
   bottom: 30px;
+  cursor: pointer;
+  color: darkgrey;
   }
 }
 i{
@@ -136,4 +138,21 @@ i{
 }
 .fa-eye:before{
   margin-right: 5px
+}
+.clear{
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: darkgrey;
+  i{
+    margin-right: 5px;
+  }
+}
+h6:hover{
+ color: black;
+}
+.clear:hover{
+  color: black
 }

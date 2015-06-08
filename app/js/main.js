@@ -1,4 +1,5 @@
 (function(){
+ 'use strict';
 
   var Todo = function(options){
     var args = options || {};
@@ -86,9 +87,12 @@ $('i').on('click', function(event){
 });
 function count(){
   var total = 0;
+  var empty = 0;
   storageBin.forEach(function(item){
     if(item.status === 'Open'){
       return total++;
+    }else if (item.status ==='Closed'){
+      return empty++;
     }
   });
   if( total === 0){
@@ -96,7 +100,11 @@ function count(){
   }else if(total > 0){
   $('h5').removeClass('hidden');
   $('#count').html(total);
-}
+  }if (empty === 0){
+   $('h6').addClass('hidden');
+  }else if (empty > 0){
+    $('h6').removeClass('hidden');
+  }
 }
 console.log('Check it out yo... NO ERRORS');
 }());

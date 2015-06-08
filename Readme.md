@@ -1,6 +1,6 @@
-## Welcome to My Repo
+## TO DO LIST
 
-> I am your Readme.md file, you should probably update me.
+> Functional To Do list.
 
 
 ## Usage

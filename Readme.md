@@ -1,6 +1,9 @@
 ## TO DO LIST
 
-> Functional To Do list.
+Assignment 16
+Added some prototypes, one to jQuery as a function that clears completed items.
+Also did some re-factoring.
+
 
 
 ## Usage

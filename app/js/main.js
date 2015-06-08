@@ -1,6 +1,6 @@
 (function(){
  'use strict';
-
+//Constuctor
   var Todo = function(options){
     var args = options || {};
 
@@ -38,7 +38,9 @@ $('.fa-undo').on('click', function(event){
   $('footer').addClass('hidden');
 
 });
-// toggle item
+// Toggle item
+
+// Mark Item Complete
 
 $('.tasks').on('click', 'label', function(event){
   event.preventDefault();
@@ -51,6 +53,8 @@ $('.tasks').on('click', 'label', function(event){
   $('h6').removeClass('hidden');
   count();
 });
+
+//Move Back to Uncomplete
 $('.complete').on('click', 'label', function(event){
   event.preventDefault();
   $(this).removeClass('complete');
@@ -62,7 +66,7 @@ $('.complete').on('click', 'label', function(event){
   count();
 
 });
-
+//Remove task
 $('ul').on("click", '.fa-minus-square', function(event){
    event.preventDefault();
    var tTask= $(this).closest('li').text();
@@ -70,6 +74,7 @@ $('ul').on("click", '.fa-minus-square', function(event){
   $(this).closest('.undone').remove();
   count();
 });
+// Show/Hide completed
 $('i').on('click', function(event){
   event.preventDefault();
   $('span').html('');
@@ -85,6 +90,7 @@ $('i').on('click', function(event){
         $('i').removeClass('fa-eye');
     }
 });
+//Counter at the bottom
 function count(){
   var total = 0;
   var empty = 0;

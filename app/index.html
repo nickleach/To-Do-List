@@ -10,20 +10,27 @@
 </head>
 <body>
   <div class="container">
+    <!-- Todo list -->
     <div class="todo">
       <h1>To Do List</h1>
+      <!-- Input form -->
       <form id="addTask" class="form">
        <input type="text" placeholder="What needs to be done?" id="taskText">
        <button>DO IT!</button>
       </form>
+      <!-- Reset Button -->
       <button class="fa fa-undo"></button>
       <section class= "lists">
+      <!-- Uncompleted Tasks -->
       <ul id="tasks" class="tasks">
       </ul>
+      <!-- Completed Tasks -->
       <ul class="complete"></ul>
       </section>
       <footer class="bottom hidden">
+      <!-- Uncompleted task counter -->
       <h5>You have <span id="count"></span> tasks left</h5>
+      <!-- Show/Hide Completed -->
       <h6 class="hidden"><i class="fa fa-eye-slash"></i><span>Hide Completed</span></h6>
       </footer>
     </div>

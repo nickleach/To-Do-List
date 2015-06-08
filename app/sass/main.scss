@@ -37,6 +37,7 @@ button:hover{
 label{
   cursor: pointer;
 }
+// Uncompleted Tasks
 .tasks{
   margin-top: 2px;
 }
@@ -48,11 +49,13 @@ label{
   font-family: 'Quicksand', sans-serif;
 }
 }
+// Completed Tasks
 .complete{
   text-decoration: line-through;
   font-style: italic;
   color: lightgrey;
 }
+// Whole List
 .todo{
   background-color: #F6F6F6;
   box-shadow: 3px 4px 9px 11px rgb(90, 86, 86);
@@ -81,6 +84,7 @@ label{
     cursor: pointer;
   }
 }
+// Reset button
 .fa-undo{
   padding: 5px;
   float: right;
@@ -89,6 +93,7 @@ label{
   top: 95px;
 
 }
+// Remove task button
 .fa-minus-square{
   float: right;
   color: silver;
@@ -100,10 +105,12 @@ label{
   color: darkgrey;
   cursor: pointer;
 }
+// Hidden class
 .hidden{
   visibility: hidden;
   height: 0;
 }
+// footer
 .bottom{
   position: relative;
   width: 80%;
@@ -123,6 +130,7 @@ label{
 i{
   margin-right: 5px;
 }
+// Show/hide icon
 .fa-eye-slash:before{
   margin-right: 5px
 }

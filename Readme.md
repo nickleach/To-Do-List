@@ -1,6 +1,6 @@
 ## TO DO LIST
 
-> Functional To Do list.
+> Functional To Do list. Built with jQuery and Handlebars.
 
 
 ## Usage
